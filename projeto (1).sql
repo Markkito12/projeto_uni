@@ -1,57 +1,57 @@
-CREATE TABLE produtos (
-    id_produto INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(30) NOT NULL,
-    preco DECIMAL(10, 2) NOT NULL,
-    imagem VARCHAR(255),
-    quantidade INT NOT NULL
+create table produtos (
+    id_produto int primary key auto_increment,
+    nome varchar(30) not null,
+    preco decimal(10, 2) not null,
+    imagem varchar(255),
+    quantidade int not null
 );
 
-CREATE TABLE clientes (
-    cpf CHAR(11) PRIMARY KEY   ,
-    nome VARCHAR(50) NOT NULL,
-    endereco VARCHAR(50) NOT NULL,
-    cidade VARCHAR(30),
-    estado VARCHAR(50),
-    cep CHAR(9)
+create table clientes (
+    cpf char(11) primary key,
+    nome varchar(50) not null,
+    endereco varchar(50) not null,
+    cidade varchar(30),
+    estado varchar(50),
+    cep char(9)
 );
 
-CREATE TABLE cartoes (
-    id_cartao INT PRIMARY KEY AUTO_INCREMENT,
-    cpf CHAR(11) NOT NULL,
-    numero_cartao DECIMAL(18,0) NOT NULL,  
-    nome_no_cartao VARCHAR(50) NOT NULL,
-    validade DATE NOT NULL,
-    codigo_seguranca INT NOT NULL,  
-    FOREIGN KEY (cpf) REFERENCES clientes(cpf)
+create table cartoes (
+    id_cartao int primary key auto_increment,
+    cpf char(11) not null,
+    numero_cartao decimal(18,0) not null,  
+    nome_no_cartao varchar(50) not null,
+    validade date not null,
+    codigo_seguranca int not null,  
+    foreign key (cpf) references clientes(cpf)
 );
 
 
-CREATE TABLE opcoes_entrega (
-    id_entrega INT PRIMARY KEY AUTO_INCREMENT,
-    tipo_entrega VARCHAR(10) NOT NULL,
-    preco DECIMAL(10, 2) NOT NULL
+create table opcoes_entrega (
+    id_entrega int primary key auto_increment,
+    tipo_entrega varchar(10) not null,
+    preco decimal(10, 2) not null
 );
 
-CREATE TABLE metodos_pagamento (
-    id_pagamento INT PRIMARY KEY AUTO_INCREMENT,
-    tipo_pagamento VARCHAR(30) NOT NULL,  
-    id_cartao INT,  
-    FOREIGN KEY (id_cartao) REFERENCES cartoes(id_cartao)
+create table metodos_pagamento (
+    id_pagamento int primary key auto_increment,
+    tipo_pagamento varchar(30) not null,  
+    id_cartao int,  
+    foreign key (id_cartao) references cartoes(id_cartao)
 );
 
-CREATE TABLE pedidos (
-    id_pedido INT PRIMARY KEY AUTO_INCREMENT,
-    cpf CHAR(11) NOT NULL,
-    id_produto INT NOT NULL,
-    id_entrega INT NOT NULL,
-    id_pagamento INT NOT NULL,
-    quantidade INT NOT NULL,
-    total DECIMAL(10, 2) NOT NULL,
-    data_pedido DATE NOT NULL,
-    FOREIGN KEY (cpf) REFERENCES clientes(cpf),
-    FOREIGN KEY (id_produto) REFERENCES produtos(id_produto),
-    FOREIGN KEY (id_entrega) REFERENCES opcoes_entrega(id_entrega),
-    FOREIGN KEY (id_pagamento) REFERENCES metodos_pagamento(id_pagamento)
+create table pedidos (
+    id_pedido int primary key auto_increment,
+    cpf char(11) not null,
+    id_produto int not null,
+    id_entrega int not null,
+    id_pagamento int not null,
+    quantidade int not null,
+    total decimal(10, 2) not null,
+    data_pedido date not null,
+    foreign key (cpf) references clientes(cpf),
+    foreign key (id_produto) references produtos(id_produto),
+    foreign key (id_entrega) references opcoes_entrega(id_entrega),
+    foreign key (id_pagamento) references metodos_pagamento(id_pagamento)
 );
 
 
@@ -60,7 +60,7 @@ insert into produtos (nome, preco, imagem, quantidade)values
 ('cadeira', 22, 'uuwgcwl.com',2);
 
 insert into clientes (cpf, nome ,endereco ,cidade ,estado ,cep) values 
-(44455566688,'Aobmr', 'Barra fuda' , 'São Paulo', 'São Paulo', '99999999');
+(44454587008,'Aobmr', 'Barra tuda' , 'São Paulo', 'São Paulo', '99999999');
 
 insert into cartoes (cpf, numero_cartao, nome_no_cartao, validade, codigo_seguranca) values
 (44455566688,1111222233334444,'Andtr','01-09-25',555);

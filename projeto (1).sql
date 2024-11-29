@@ -34,7 +34,8 @@ create table opcoes_entrega (
 
 create table metodos_pagamento (
     id_pagamento int primary key auto_increment,
-    tipo_pagamento varchar(30) not null,  
+    tipo_pagamento varchar(30) not null,
+    preco,
     id_cartao int,  
     foreign key (id_cartao) references cartoes(id_cartao)
 );

@@ -17,12 +17,10 @@ create table clientes (
 
 create table cartoes (
     id_cartao int primary key auto_increment,
-    cpf char(11) not null,
     numero_cartao decimal(18,0) not null,  
     nome_no_cartao varchar(50) not null,
     validade date not null,
-    codigo_seguranca int not null,  
-    foreign key (cpf) references clientes(cpf)
+    codigo_seguranca int not null
 );
 
 

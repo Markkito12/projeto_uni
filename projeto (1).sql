@@ -33,8 +33,8 @@ create table opcoes_entrega (
 create table metodos_pagamento (
     id_pagamento int primary key auto_increment,
     tipo_pagamento varchar(30) not null,
-    preco,
-    id_cartao int,  
+    preco decimal(10, 2) not null,
+    id_cartao int,
     foreign key (id_cartao) references cartoes(id_cartao)
 );
 
@@ -59,16 +59,16 @@ insert into produtos (nome, preco, imagem, quantidade)values
 ('cadeira', 22, 'uuwgcwl.com',2);
 
 insert into clientes (cpf, nome ,endereco ,cidade ,estado ,cep) values 
-(44454587008,'Aobmr', 'Barra tuda' , 'São Paulo', 'São Paulo', '99999999');
+(11255587008,'Zé', 'Lapa' , 'São Paulo', 'São Paulo', '90999999');
 
-insert into cartoes (cpf, numero_cartao, nome_no_cartao, validade, codigo_seguranca) values
-(44455566688,1111222233334444,'Andtr','01-09-25',555);
+insert into cartoes ( numero_cartao, nome_no_cartao, validade, codigo_seguranca) values
+(1111222233334444,'Andtr','01-09-25',555);
 
 insert into opcoes_entrega (tipo_entrega,preco) values 
 ('sedex',28.00);
 
-insert into metodos_pagamento (tipo_pagamento,id_cartao) values 
-('credito',1);
+insert into metodos_pagamento (tipo_pagamento,preco,id_cartao) values 
+('credito',20,1);
 
 insert into pedidos (cpf,id_produto,id_entrega,id_pagamento,quantidade,total,data_pedido) values 
-(44455566688,1,1,1,10,50.00,'01-12-24');
+(11255587008,1,1,1,10,50.00,'01-12-24');
